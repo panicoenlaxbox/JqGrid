@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<table id="grid"></table>
+<div id="pager"></div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $("#grid")
+                .jqGrid({
+                    url: "@Url.Action("Customers")",
+                    datatype: "json",
+                    colNames: ["Name", "Birthday"],
+                    colModel: [
+                        { name: "Name", width: 100 },
+                        { name: "Birthday", width: 100 }
+                    ],
+                    width: 1100,
+                    pager: "#pager",
+                    rowNum: 20,
+                    sortname: "Name",
+                    sortorder: "desc",
+                    viewrecords: true,
+                    rowList: [10, 20, 30],
+                    sortable: true,
+                    height: "auto",
+                    gridview: true,
+                    styleUI: "Bootstrap"
+                });
+        });
+    </script>
+}
